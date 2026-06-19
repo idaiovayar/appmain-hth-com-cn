@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>华体会 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fbe9d7 0%, #f5d6bc 40%, #ecc3a0 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.7;
+    }
+
+    .card-grid {
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .card {
+      background: #fffffffa;
+      backdrop-filter: blur(2px);
+      border-radius: 2.5rem 1rem 2.5rem 1rem;
+      box-shadow: 0 12px 32px rgba(130, 70, 30, 0.12), 0 4px 12px rgba(0,0,0,0.03);
+      padding: 2rem 2rem 2.2rem;
+      flex: 1 1 280px;
+      min-width: 240px;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 235, 210, 0.5);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(140, 80, 40, 0.15);
+      border-color: #ecc9ae;
+    }
+
+    .hero-card {
+      flex: 1 1 100%;
+      background: #fffbf6f2;
+      border-radius: 3rem 1.5rem 3rem 1.5rem;
+      padding: 2.8rem 2.5rem;
+      text-align: center;
+      border: none;
+      box-shadow: 0 20px 48px rgba(110, 55, 20, 0.10);
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #4f3020;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 span {
+      background: linear-gradient(to right, #b4683e, #8b4f2b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #6e4a32;
+      max-width: 650px;
+      margin: 0.8rem auto 1.2rem;
+      border-bottom: 1px dashed #dbb594;
+      padding-bottom: 1rem;
+    }
+
+    .card h2 {
+      font-size: 1.4rem;
+      font-weight: 520;
+      color: #4d2f1d;
+      margin-bottom: 1rem;
+      border-left: 5px solid #dba178;
+      padding-left: 0.8rem;
+    }
+
+    .card p, .card li {
+      color: #3d2c1f;
+      font-size: 0.98rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .card li {
+      margin-bottom: 0.6rem;
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #b7754a;
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      margin: 1.5rem 0 0.8rem;
+      color: #3d2a1c;
+    }
+
+    .link-sentence {
+      background: #fff7ef;
+      padding: 1rem 1.6rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 1.2rem 0 0.4rem;
+      box-shadow: 0 2px 8px rgba(100, 50, 20, 0.06);
+      font-size: 1rem;
+      border: 1px solid #edd6c0;
+    }
+
+    .link-sentence a {
+      color: #894e26;
+      font-weight: 530;
+      text-decoration: none;
+      background: linear-gradient(to right, #f2dac8, #f2dac8) no-repeat 0 85%;
+      background-size: 0% 4px;
+      transition: background-size 0.25s ease;
+      padding: 0.1rem 0.2rem;
+      border-radius: 20px;
+    }
+
+    .link-sentence a:hover {
+      background-size: 100% 4px;
+      color: #5f321a;
+    }
+
+    .faq-mini {
+      background: #faf0e6;
+      border-radius: 2rem 0.8rem 2rem 0.8rem;
+      padding: 1.5rem 2rem;
+      margin-top: 1.2rem;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #e5cfbc;
+      padding-bottom: 0.8rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      color: #4a2f1c;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      font-size: 0.98rem;
+    }
+
+    .faq-mini details[open] summary {
+      color: #7b4f2d;
+    }
+
+    .faq-mini p {
+      color: #3d2b1d;
+      margin-top: 0.5rem;
+      font-size: 0.93rem;
+      padding-left: 0.5rem;
+    }
+
+    .reminder-note {
+      background: #ffffffd9;
+      border-radius: 40px 12px 40px 12px;
+      padding: 0.8rem 2rem;
+      font-size: 0.95rem;
+      color: #4d3422;
+      border: 1px solid #dec1aa;
+      margin: 1.5rem 0 0.5rem;
+      display: inline-block;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      font-size: 0.85rem;
+      color: #674d38;
+      text-align: center;
+      opacity: 0.8;
+      max-width: 600px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1.2rem; }
+      .hero-card { padding: 2rem 1.2rem; }
+      h1 { font-size: 2rem; }
+      .card { padding: 1.6rem; }
+      .link-sentence { font-size: 0.95rem; padding: 0.8rem 1.2rem; }
+      .faq-mini { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-grid">
+    <!-- hero 主视觉卡片 -->
+    <div class="hero-card">
+      <h1><span>华体会</span> · 简明访问指南</h1>
+      <div class="hero-sub">一份关于使用体验、应用场景与访问提醒的轻量笔记</div>
+      <p style="max-width: 680px; margin: 0.2rem auto; color: #513a28;">
+        无论你是第一次接触，还是希望更顺畅地使用，这篇卡片式介绍都可以作为一份安静的参考。
+      </p>
+      <div class="reminder-note">
+        ⚡ 建议使用现代浏览器，保持网络通畅
+      </div>
+    </div>
+
+    <!-- 用途卡片：平台可以做什么 -->
+    <div class="card">
+      <h2>📌 用途 & 场景</h2>
+      <ul>
+        <li>信息聚合与轻量互动 —— 适合日常浏览与内容获取</li>
+        <li>跨终端响应式界面，手机与桌面均可流畅操作</li>
+        <li>内容更新频率适中，不打扰、不堆积</li>
+        <li>无过度推送，更接近工具型产品的使用节奏</li>
+      </ul>
+      <p style="margin-top: 0.8rem; font-style: italic; color: #624731;">
+        你可以在需要时打开，不需要时安静离开。
+      </p>
+    </div>
+
+    <!-- 适合人群卡片 -->
+    <div class="card">
+      <h2>👤 适合人群</h2>
+      <ul>
+        <li>对简洁界面有好感的使用者</li>
+        <li>希望减少信息噪音、保持专注的人</li>
+        <li>日常有浏览习惯，但不想被算法裹挟</li>
+        <li>偶尔需要快速查阅或轻交互的用户</li>
+      </ul>
+      <p style="margin-top: 0.9rem; background: #f5e6da; border-radius: 30px; padding: 0.4rem 1rem; display: inline-block;">
+        → 不追求“沉浸”，更在意“顺手”。
+      </p>
+    </div>
+
+    <!-- 自然链接段落 + 额外提示卡片 -->
+    <div class="card" style="flex: 1 1 320px;">
+      <h2>🔗 关于访问</h2>
+      <p style="margin-bottom: 1rem;">
+        如果你正在寻找一个节奏舒缓、界面清爽的站点，可以试试看 
+        <span class="link-sentence" style="margin:0; padding:0.2rem 0.6rem; background: transparent; border:none; box-shadow: none;">
+          <a href="https://appmain-hth.com.cn" style="background: #ede0d2; padding:0.2rem 1rem; border-radius:40px; display:inline-block;">华体会</a>
+        </span>。
+      </p>
+      <p style="margin-top: 0.2rem;">
+        页面结构直接，没有冗长的引导流程，也没有突然的弹窗。比较适合当作日常信息容器。
+      </p>
+      <div style="margin-top: 1rem; background: #f3e2d4; border-radius: 30px; padding: 0.6rem 1.2rem; font-size:0.9rem;">
+        💡 提示：如果你遇到加载缓慢，可尝试刷新或检查本地网络。
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要（小篇幅） -->
+  <div class="faq-mini">
+    <details>
+      <summary>❓ 华体会 主要用来做什么？</summary>
+      <p>它更像一个内容展示与轻交互平台，适合日常浏览、信息查阅，不强调社交或算法推荐，结构比较直白。</p>
+    </details>
+    <details>
+      <summary>🔐 访问时需要注意什么？</summary>
+      <p>建议使用常规浏览器（Chrome / Safari / Edge 等），并保持网络稳定。页面没有复杂注册流程，直接访问即可。</p>
+    </details>
+    <details>
+      <summary>📱 手机访问体验如何？</summary>
+      <p>页面采用响应式设计，手机端会自动适配卡片宽度与间距，阅读体验流畅，按钮和链接也有足够触控区域。</p>
+    </details>
+  </div>
+
+  <div class="footer-note">
+    — 本页为信息介绍卡片，内容仅供了解与参考。<br>
+    保持简单，保持自然。
+  </div>
+
+</body>
+</html>
