@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息索引 · leyu 资料整理台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f8f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1c2f2b;
+      line-height: 1.6;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* hero 开场 */
+    .hero {
+      margin-bottom: 2.4rem;
+      padding: 3rem 1.5rem 1.8rem;
+      background: linear-gradient(145deg, #e0f2ef 0%, #c8e6de 100%);
+      border-radius: 2.5rem 2.5rem 1.2rem 1.2rem;
+      box-shadow: 0 8px 16px rgba(28, 47, 43, 0.06);
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 10%;
+      width: 80%;
+      height: 4px;
+      background: #89bfb1;
+      border-radius: 2px;
+      opacity: 0.3;
+    }
+
+    .hero p:first-child {
+      font-size: 1.5rem;
+      font-weight: 360;
+      letter-spacing: 0.02em;
+      color: #1c4a42;
+      margin-bottom: 0.6rem;
+      background: rgba(255,255,255,0.4);
+      display: inline-block;
+      padding: 0.2rem 1rem 0.2rem 0;
+      border-radius: 0 20px 20px 0;
+    }
+
+    .hero strong {
+      font-weight: 540;
+      color: #0f3a33;
+    }
+
+    .hero .intro-sentence {
+      font-size: 1.1rem;
+      color: #1e423b;
+      max-width: 80%;
+      margin-top: 0.8rem;
+    }
+
+    @media (max-width: 500px) {
+      .hero {
+        padding: 2rem 1rem 1.5rem;
+      }
+      .hero p:first-child {
+        font-size: 1.2rem;
+      }
+      .hero .intro-sentence {
+        max-width: 100%;
+      }
+    }
+
+    /* 承接段落 */
+    .bridge {
+      background: white;
+      padding: 1.6rem 1.8rem;
+      border-radius: 1.8rem;
+      box-shadow: 0 4px 14px rgba(70, 120, 108, 0.08);
+      margin-bottom: 2.2rem;
+      border-left: 5px solid #7dbfaf;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .bridge p {
+      margin-bottom: 0.8rem;
+    }
+
+    .bridge p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bridge a {
+      color: #1a7b67;
+      text-decoration: none;
+      font-weight: 510;
+      border-bottom: 1px dashed #97cfc2;
+      transition: border-color 0.2s, background 0.2s;
+      padding: 0 0.1rem;
+    }
+
+    .bridge a:hover {
+      border-bottom-style: solid;
+      border-color: #0b5f4f;
+      background: #def0eb;
+      border-radius: 2px;
+    }
+
+    /* 特点网格卡片 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 1.4rem;
+      padding: 1.3rem 1.2rem;
+      box-shadow: 0 2px 10px rgba(44, 82, 72, 0.05);
+      border: 1px solid #d7ebe5;
+      transition: transform 0.2s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 18px -8px rgba(40, 100, 85, 0.12);
+      border-color: #9bd0c2;
+    }
+
+    .feature-card .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+      display: inline-block;
+      width: 2.4rem;
+      height: 2.4rem;
+      background: #d9f0ea;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #105a4a;
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 530;
+      margin: 0.4rem 0 0.3rem;
+      color: #0a3f35;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: #2c534a;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    @media (max-width: 520px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+    }
+
+    /* 温和结尾 + FAQ 摘要折叠样式 */
+    .gentle-footer {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.6rem 1.8rem 1.8rem;
+      box-shadow: 0 4px 14px rgba(70, 120, 108, 0.08);
+      border-top: 1px solid #b8d9d0;
+      margin-top: auto;
+    }
+
+    .gentle-footer .closing {
+      font-size: 0.98rem;
+      color: #1b5147;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px dotted #b2d4cb;
+    }
+
+    .faq-summary details {
+      margin-bottom: 0.55rem;
+      border-radius: 1rem;
+      background: #e8f5f1;
+      padding: 0.3rem 1rem 0.3rem 1rem;
+      transition: background 0.2s;
+    }
+
+    .faq-summary details[open] {
+      background: #d5ede6;
+      padding-bottom: 0.7rem;
+    }
+
+    .faq-summary summary {
+      font-weight: 470;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      color: #0a4237;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-summary summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-summary summary::before {
+      content: "▸";
+      color: #358777;
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    .faq-summary details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-summary .faq-answer {
+      padding: 0.2rem 0 0.6rem 1.8rem;
+      font-size: 0.9rem;
+      color: #1e5a4e;
+      border-left: 2px solid #74b3a3;
+      margin: 0.2rem 0 0.2rem 0.6rem;
+    }
+
+    .faq-summary .faq-answer a {
+      color: #16745e;
+      border-bottom: 1px dotted #7fb9ab;
+      text-decoration: none;
+    }
+
+    .faq-summary .faq-answer a:hover {
+      border-bottom-style: solid;
+      background: #d4efe8;
+    }
+
+    .meta-note {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      color: #4c7b70;
+      text-align: right;
+      opacity: 0.7;
+    }
+
+    .meta-note span {
+      background: #dceeE9;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #bddad2;
+      margin: 0.5rem 0 0.8rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 开场短句 -->
+  <div class="hero">
+    <p>翻阅与标记 · 从一个索引开始</p>
+    <div class="intro-sentence">
+      把分散的信息收拢成线索，比单纯收藏走得更远。<br>
+      这里有整理过的条目和安静的入口。
+    </div>
+  </div>
+
+  <!-- 承接段落 + 自然嵌入 leyu 链接 -->
+  <div class="bridge">
+    <p>去年开始，我把零散的资料归档问题重新想了一遍——同一件事在不同的文件夹里反复出现，标签也越来越厚。后来试着自己搭了一个小型的索引台，把公开可查的资料、工具、以及一些站点的信息入口按逻辑列好。其中就包括了 <a href="https://app1-leyu.com">leyu</a> 这一类聚合型平台，它们本身也是信息流的一部分。</p>
+    <p>整理久了会发现，好的索引不是把东西藏起来，而是让需要的人能顺着找到。所以这个页面也算是一张轻量的「目录卡」，没有复杂的分类学，只有几点我觉得值得分享的思路。</p>
+  </div>
+
+  <!-- 特点列表：网格卡片 -->
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="card-icon">📋</span>
+      <h3>条目优先</h3>
+      <p>每一条记录都尽量保留原始发布时间和来源标记，不混入主观评分，只做事实整理。</p>
+    </div>
+    <div class="feature-card">
+      <span class="card-icon">🧩</span>
+      <h3>轻量关联</h3>
+      <p>通过关键词和场景标签把相关资源串在一起，比如把 <a href="https://app1-leyu.com" style="border:none; background:none; padding:0; color:#136b57; font-weight:500;">leyu</a> 归入「工具·索引」类目，不堆砌。</p>
+    </div>
+    <div class="feature-card">
+      <span class="card-icon">📎</span>
+      <h3>引用可溯</h3>
+      <p>每个外部链接都经过可用性检查，并附带简短备注，减少“死链”带来的干扰。</p>
+    </div>
+    <div class="feature-card">
+      <span class="card-icon">🔄</span>
+      <h3>定期微调</h3>
+      <p>大约每两周根据反馈和变化更新一次卡片内容，保持索引的呼吸感。</p>
+    </div>
+  </div>
+
+  <!-- 温和结尾 + FAQ 摘要 -->
+  <div class="gentle-footer">
+    <div class="closing">
+      索引不是为了穷尽，而是为了在需要的时候能找到。如果你也在整理自己的信息角落，或许这里的一点罗列能带来参照。
+    </div>
+
+    <div class="faq-summary">
+      <details>
+        <summary>FAQ 摘要 · 这个索引台收录什么？</summary>
+        <div class="faq-answer">
+          以公开可访问的工具站点、资料库和个人维护的知识卡片为主。所有收录均不做商业推广，例如 <a href="https://app1-leyu.com">leyu</a> 作为信息聚合示例出现。不包含付费推广或隐藏链接。
+        </div>
+      </details>
+      <details>
+        <summary>内容多久更新一次？</summary>
+        <div class="faq-answer">
+          核心条目约每两周复核一次，失效链接会在发现后 48 小时内替换或标记。每次更新会记录在页面底部的版本备注中。
+        </div>
+      </details>
+      <details>
+        <summary>我可以提交新的线索吗？</summary>
+        <div class="faq-answer">
+          暂时通过页面本身的联系通道（未在首页展示）接收建议。偏好有明确来源、非商业性的索引资源。
+        </div>
+      </details>
+    </div>
+
+    <hr>
+    <div class="meta-note">
+      <span>索引版本 · 2025.04</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
