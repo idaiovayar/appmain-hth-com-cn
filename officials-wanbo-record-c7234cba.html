@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常对照 · 万博体育专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fce9c8 0%, #f8d7b0 40%, #f3c69a 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.2rem;
+      line-height: 1.7;
+      color: #2d241c;
+    }
+
+    .page-card {
+      max-width: 820px;
+      width: 100%;
+      background: #fffcf7;
+      border-radius: 36px 36px 28px 28px;
+      box-shadow: 0 12px 30px rgba(120, 70, 30, 0.12), 0 2px 10px rgba(0,0,0,0.04);
+      padding: 2.5rem 2.2rem 2.8rem;
+      transition: box-shadow 0.25s;
+    }
+
+    @media (max-width: 500px) {
+      .page-card {
+        padding: 1.8rem 1.2rem 2.2rem;
+        border-radius: 28px 28px 20px 20px;
+      }
+      body {
+        padding: 1rem 0.8rem;
+      }
+    }
+
+    /* 杂志式横幅 */
+    .hero {
+      margin-bottom: 2.4rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 2px dashed #e3cdb6;
+    }
+
+    .hero-label {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b4845b;
+      background: #f3e3d2;
+      display: inline-block;
+      padding: 0.1rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #3c281c;
+      margin: 0.2rem 0 0.3rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #7e5f44;
+      font-weight: 350;
+    }
+
+    /* 背景说明 — 杂志引言 */
+    .background-note {
+      background: #f9efe5;
+      border-radius: 24px;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0 2.4rem;
+      font-size: 1.05rem;
+      color: #3b2b1f;
+      box-shadow: inset 0 1px 6px rgba(160, 110, 60, 0.06);
+    }
+
+    .background-note p {
+      margin-bottom: 0.75rem;
+    }
+
+    .background-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    .background-note strong {
+      font-weight: 550;
+      color: #5f3d24;
+    }
+
+    /* 三段自然介绍卡片 (两列灵活布局) */
+    .story-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .story-item {
+      flex: 1 1 200px;
+      min-width: 180px;
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 1.6rem 1.5rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(150, 100, 50, 0.06);
+      border: 1px solid #f5e6d8;
+      transition: all 0.15s;
+    }
+
+    .story-item:hover {
+      border-color: #dcb594;
+      box-shadow: 0 8px 18px rgba(150, 90, 40, 0.07);
+    }
+
+    .story-item h3 {
+      font-size: 1.3rem;
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      color: #3f2c1c;
+      margin-bottom: 0.7rem;
+      border-left: 5px solid #dbb48e;
+      padding-left: 0.8rem;
+    }
+
+    .story-item p {
+      color: #4a3829;
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* 页尾访问提示 — 自然嵌入 sentence */
+    .footer-tip {
+      margin-top: 2.8rem;
+      padding: 1.6rem 0 0.2rem;
+      border-top: 2px dotted #dccbbc;
+      text-align: center;
+      font-size: 1.05rem;
+      color: #423124;
+    }
+
+    .footer-tip a {
+      display: inline;
+      background: transparent;
+      color: #8a5f3e;
+      font-weight: 550;
+      text-decoration: none;
+      border-bottom: 1.5px solid #cdb096;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+    }
+
+    .footer-tip a:hover {
+      color: #4d301e;
+      border-bottom-color: #8a5f3e;
+    }
+
+    .footer-tip .glance {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #7a624b;
+    }
+
+    /* 辅助圆润感 */
+    .soft-btn-like {
+      display: inline-block;
+      background: #f0ddd0;
+      color: #3d2a1b;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      letter-spacing: 0.3px;
+      margin-right: 0.4rem;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e7d4c0;
+      margin: 1.8rem 0;
+      opacity: 0.4;
+    }
+
+    /* 附加 FAQ 风格摘要（融入日常查询语境） */
+    .faq-mini {
+      background: #fffaf5;
+      border-radius: 28px;
+      padding: 1.4rem 1.8rem;
+      margin: 1.8rem 0 2rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 480;
+      color: #503b2b;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+    }
+
+    .faq-mini p {
+      margin-top: 0.6rem;
+      color: #4c3827;
+      font-size: 0.96rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-card">
+
+  <!-- 首页横幅 -->
+  <header class="hero">
+    <span class="hero-label">📖 日常对照 · 专题</span>
+    <h1>万博体育</h1>
+    <div class="sub">查询 · 对照 · 延伸阅读</div>
+  </header>
+
+  <!-- 背景说明（杂志式开篇） -->
+  <div class="background-note">
+    <p><strong>一些朋友在问</strong> —— 平时想查一查体育资讯、对比不同平台的信息，或者只是想顺着某个线索浏览更多相关内容。常常需要一个稳定的落脚点，而不是零散的页面。</p>
+    <p>这个专题从“日常查询”和“延伸阅读”的角度出发，把与 <strong>万博体育</strong> 有关的背景、特点与使用场景整理在一起，方便随手翻阅、对照。</p>
+  </div>
+
+  <!-- 三段自然介绍 -->
+  <div class="story-grid">
+    <div class="story-item">
+      <h3>信息对照</h3>
+      <p>很多人习惯同时打开几个页面，横向比较活动、赛事或服务说明。<br>把常用条目放在一起，能更快找到自己关心的那部分。</p>
+    </div>
+    <div class="story-item">
+      <h3>日常延伸</h3>
+      <p>周末翻一翻体育新闻，或者想了解某个联赛的规则变动，顺着一个入口就能看到更多关联话题，不用反复跳转。</p>
+    </div>
+    <div class="story-item">
+      <h3>随手笔记</h3>
+      <p>无论是记录几个关键数字，还是想保留一篇可回看的介绍，一个简洁的页面总比收藏夹里的一堆链接好用。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 风格摘要（日常生活疑问） -->
+  <details class="faq-mini">
+    <summary>❓ 常见疑问摘要 · 查询时想到的几个问题</summary>
+    <p>如何快速找到历史记录？—— 多数情况下，在主页的导航栏或搜索区域输入关键词就能定位。</p>
+    <p>信息更新频率怎么样？—— 各赛事与公告会随官方节奏同步，建议以页面标注的时间为准。</p>
+    <p>有没有更细致的分类？—— 通常可以按运动项目、赛事类型或地区来筛选，这也是很多人习惯的做法。</p>
+  </details>
+
+  <!-- 自然嵌入链接的页尾访问提示 -->
+  <div class="footer-tip">
+    <p>
+      如果你也在做类似的日常对照，不妨把 
+      <a href="https://officials-wanbo.com">万博体育</a> 
+      作为一个参考点。
+    </p>
+    <span class="glance">一本打开就能翻的体育手册 · 杂志专题</span>
+  </div>
+
+  <!-- 装饰性备注（无链接，仅风格） -->
+  <hr>
+  <div style="font-size:0.8rem; color:#ad8b75; text-align:right; margin-top:0.8rem;">
+    <span class="soft-btn-like">对照版</span> 信息源自公开整理
+  </div>
+</div>
+</body>
+</html>
